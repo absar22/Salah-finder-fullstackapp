@@ -70,6 +70,23 @@ app.get('/search-history', async (req, res) => {
 });
 
 
+app.post('/search-history', async (req, res) => {
+  try {
+    const { city, country } = req.body;
+    if (!city || !country) {
+      return res.status(400).json({ error: 'City and country are required' });
+    }
+
+    const newEntry = { city: city.toLowerCase(), country: country.toLowerCase(), date: new Date() };
+    await db.collection('searchHistory').insertOne(newEntry);
+    res.status(201).json({ message: 'Search history saved' });
+  } catch (err) {
+    console.error('Failed to save search history:', err);
+    res.status(500).json({ error: 'Failed to save search history' });
+  }
+});
+
+
 app.listen(process.env.PORT || PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);
 });
