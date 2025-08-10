@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Salah Time App</title>
+</head>
+<body>
+  <h1>Welcome to Salah Time App</h1>
+    <form action="/get-prayer-times" method="GET">
+    <label for="city">City:</label>
+    <input type="text" id="city" name="city" required>
+
+    <label for="country">Country:</label>
+    <input type="text" id="country" name="country" required>
+
+    <button type="button">Get Prayer Times</button>
+
+    
+    <div id="output"></div>
+  </form>
+  <div id="history"></div>
+
+  <script src="main.js"></script>
+</body>
+</html>
